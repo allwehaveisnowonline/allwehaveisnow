@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AllWeHaveIsNow — Request Access & 20‑min Chemistry Call</title>
+
+  <!-- Calendly widget CSS -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root { --ink: #11203f; --muted:#555; --card:#fff; }
+    body { font-family: Georgia, serif; max-width: 980px; margin: 56px auto; padding: 0 18px; color:#111; background:#f6f4f0; }
+    header { text-align:center; margin-bottom:18px; }
+    h1 { margin: 6px 0 4px; font-size: 1.9rem; color:var(--ink); }
+    p.lead { margin:0 0 18px; color:var(--muted); font-size:1.02rem; }
+    .card { background:var(--card); border-radius:12px; padding:20px; box-shadow:0 6px 20px rgba(10,14,28,0.06); }
+    form { display:block; }
+    input, textarea { display:block; width:100%; padding:10px 12px; margin:10px 0; border-radius:8px; border:1px solid #ddd; font-size:1rem; box-sizing:border-box; }
+    .controls { display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; align-items:center; }
+    .btn { background:var(--ink); color:#fff; border:0; padding:10px 14px; border-radius:8px; cursor:pointer; text-decoration:none; display:inline-block; font-weight:600; }
+    .btn.ghost { background:#fff; color:var(--ink); border:1px solid rgba(17,32,63,0.06); }
+    .note { font-size:0.95rem; color:var(--muted); margin-top:12px; }
+    /* Calendly embed layout */
+    .calendly-wrap { margin-top:22px; display:flex; gap:20px; align-items:flex-start; flex-direction:column; }
+    .calendly-info { max-width:520px; }
+    .calendly-title { font-family: Georgia, serif; font-size:1.2rem; margin:0 0 6px; color:var(--ink); }
+    .calendly-desc { color:var(--muted); margin:0 0 12px; line-height:1.45; }
+    /* make the inline widget responsive and flowing */
+    .calendly-container { width:100%; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(10,14,28,0.08); background:#fff; }
+    .calendly-inline-widget { width:100%; min-height:580px; }
+    @media (min-width:1100px) {
+      .calendly-wrap { flex-direction:row; align-items:flex-start; }
+      .calendly-info { flex:0 0 360px; }
+      .calendly-container { flex:1 1 620px; min-height:640px; }
+    }
+    .status { margin-top:10px; color:var(--muted); font-size:0.95rem; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Request Access</h1>
+    <p class="lead">This space is intentional.</p>
+  </header>
+
+  <main class="card" aria-live="polite">
+    <!-- Formspree form: works without JS as fallback -->
+    <form id="accessForm" action="https://formspree.io/f/xbdvdlgr" method="POST" novalidate>
+      <input type="text" name="name" id="name" placeholder="Name" required>
+      <input type="email" name="email" id="email" placeholder="Email" required>
+      <textarea name="message" id="message" placeholder="What brings you here?" required style="height:120px;"></textarea>
+
+      <div class="controls">
+        <button type="submit" class="btn">Request Access</button>
+        <a href="#calendly" id="skipToBook" class="btn ghost">Go to booking</a>
+      </div>
+
+      <div class="status" id="status">We'll read every request personally.</div>
+    </form>
+
+    <!-- Calendly section (hidden until JS inits or user scrolls) -->
+    <section id="calendly" class="calendly-wrap" aria-labelledby="calTitle" hidden>
+      <div class="calendly-info">
+        <h2 id="calTitle" class="calendly-title">20‑Minute Chemistry Call</h2>
+        <p class="calendly-desc">
+          A 20‑minute chemistry call to see if the practitioners we currently work with align with where you are now — and to discuss how we might build your structure. Not a session; a short conversation to explore fit.
+        </p>
+        <p style="margin-top:12px;"><strong>What you'll get:</strong></p>
+        <ul style="margin-top:8px; color:var(--muted)">
+          <li>A short exploration of where you are now</li>
+          <li>Whether our practitioner matches and next steps</li>
+          <li>Clear, quick guidance on how to proceed</li>
+        </ul>
+        <p class="note">If the inline calendar below does not load, <a id="calLink" href="https://calendly.com/allwehaveisnow-online/get2know" target="_blank" rel="noopener">open the booking page in a new tab</a>.</p>
+      </div>
+
+      <div class="calendly-container" id="calendlyContainer" aria-label="Calendly booking widget area">
+        <!-- Calendly will be initialized into this element with prefilled name/email after form submission -->
+        <!-- If the user clicks "Go to booking" the widget will initialize (no prefill unless form was filled) -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Calendly widget JS -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <script>
+    (function(){
+      const CALENDLY_EVENT = 'https://calendly.com/allwehaveisnow-online/get2know';
+      const form = document.getElementById('accessForm');
+      const status = document.getElementById('status');
+      const calendlySection = document.getElementById('calendly');
+      const calendlyContainer = document.getElementById('calendlyContainer');
+      const skipToBook = document.getElementById('skipToBook');
+      const calLink = document.getElementById('calLink');
+
+      // Helper to wait for Calendly global to be available
+      function whenCalendlyReady(cb, timeout = 5000) {
+        const start = Date.now();
+        (function poll(){
+          if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') return cb();
+          if (Date.now() - start > timeout) return cb(new Error('Calendly not ready'));
+          setTimeout(poll, 120);
+        })();
+      }
+
+      // Initialize inline widget into calendlyContainer with given url (can include prefill query params)
+      function initInlineCalendly(url) {
+        // Clear previous content
+        calendlyContainer.innerHTML = '';
+        whenCalendlyReady((err) => {
+          if (err) {
+            // Fallback — show link if widget fails
+            calendlyContainer.innerHTML = '<div style="padding:28px;"><p style="color:#666;">Booking widget failed to load. <a href="' + encodeURI(url) + '" target="_blank" rel="noopener">Open booking in a new tab</a>.</p></div>';
+            return;
+          }
+          Calendly.initInlineWidget({
+            url: url,
+            parentElement: calendlyContainer,
+            prefill: {},
+            utm: {}
+          });
+        });
+      }
+
+      // Show calendly section (if hidden) and optionally scroll into view
+      function revealCalendly() {
+        if (calendlySection.hasAttribute('hidden')) calendlySection.removeAttribute('hidden');
+        // smooth scroll
+        calendlySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Build prefilled Calendly URL from name & email
+      function prefillUrl(name, email) {
+        const params = new URLSearchParams();
+        if (name) params.set('name', name);
+        if (email) params.set('email', email);
+        return CALENDLY_EVENT + (CALENDLY_EVENT.includes('?') ? '&' : '?') + params.toString();
+      }
+
+      // When user clicks "Go to booking" show the embed without prefill (unless they filled form)
+      skipToBook.addEventListener('click', function(e){
+        e.preventDefault();
+        // If user has typed name/email, use prefill
+        const n = document.getElementById('name').value.trim();
+        const em = document.getElementById('email').value.trim();
+        const url = (n || em) ? prefillUrl(n, em) : CALENDLY_EVENT;
+        revealCalendly();
+        initInlineCalendly(url);
+      });
+
+      // Intercept form submit with JS; still falls back to native POST if JS disabled
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        status.textContent = 'Sending request…';
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            status.textContent = 'Thanks — request sent. Below is the booking calendar, prefilled with your details.';
+            // Reveal and init calendly with prefill
+            const name = encodeURIComponent(formData.get('name') || '');
+            const email = encodeURIComponent(formData.get('email') || '');
+            const urlWithPrefill = prefillUrl(name, email);
+            revealCalendly();
+            initInlineCalendly(urlWithPrefill);
+            // Update fallback link href as well
+            calLink.href = urlWithPrefill;
+            // Optionally clear the form (uncomment if desired)
+            // form.reset();
+          } else {
+            const data = await response.json().catch(()=>null);
+            status.textContent = data && data.error ? data.error : 'There was a problem submitting the form.';
+          }
+        } catch (err) {
+          console.error(err);
+          status.textContent = 'Submission failed. Please try again or email allwehaveisnow.online@gmail.com directly.';
+        }
+      });
+
+      // If the user scrolls to calendly (or refreshes with #calendly), auto-init simple widget (no prefill)
+      if (location.hash === '#calendly') {
+        revealCalendly();
+        initInlineCalendly(CALENDLY_EVENT);
+      }
+    })();
+  </script>
+
+</body>
+</html>
