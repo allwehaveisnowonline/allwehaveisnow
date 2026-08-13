@@ -1,0 +1,9 @@
+.hero-right-link { display: block; width: 320px; max-width: 40vw; margin: 0 auto; }
+.hero-right-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;          /* match your rounded card */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  object-fit: cover;
+}
