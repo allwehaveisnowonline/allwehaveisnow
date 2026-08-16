@@ -1,3 +1,159 @@
-<a class="hero-right-link" href="https://www.instagram.com/reel/DNqNzNbM-R-/" target="_blank" rel="noopener noreferrer" title="Open Instagram post">
-  <img class="ig-img hero-right-image" src="/assets/images/hero-image.png" alt="Hero image showing preview of our post" loading="lazy" decoding="async">
-</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALLWEHAVEISNOW. — What You Carry Is Meant To Be Seen</title>
+  <meta name="description" content="Stop repeating what’s been running on autopilot. Refine how you feel, respond, and relate — from the inside out." />
+
+  
+  
+  <!-- EDIT FONTS HERE -->
+  <style type="text/css">@font-face {font-family:Fraunces;font-style:normal;font-weight:400;src:url(/cf-fonts/v/fraunces/5.2.9/vietnamese/opsz/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U[...]
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper: #F4EEE3;
+      --paper-2: #FBF8F2;
+      --ink: #1B3A8B;
+      --ink-soft: #34508F;
+      --clay: #BE7950;
+      --text: #232A33;
+      --muted: #6A7079;
+      --line: rgba(27,58,139,0.14);
+      --dark: #0E1422;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --max: 1140px;
+      --shadow: 0 24px 70px rgba(20,28,45,0.10);
+      --t: 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: "";
+      position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' num[...]
+      mix-blend-mode: multiply; opacity: 0.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, video, iframe { max-width: 100%; display: block; }
+
+    /* CENTERED WRAP with guaranteed side breathing room */
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding-left: clamp(1.25rem, 5vw, 3rem); padding-right: clamp(1.25rem, 5vw, 3rem); }
+    .section { padding: clamp(3.5rem, 8vw, 7rem) 0; }
+
+    .eyebrow { font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--clay); font-weight: 600; margin-bottom: 1.1rem; }
+
+    h2.title { font-family: var(--serif); font-size: clamp(2rem, 4.4vw, 3.7rem); line-height: 1.04; letter-spacing: -0.015em; font-weight: 400; color: var(--ink); margin-bottom: 1.1rem; }
+    h2.title em { font-style: italic; }
+    .lede { max-width: 620px; color: var(--muted); font-size: 1.02rem; }
+
+    /* NAV */
+    .nav { position: fixed; inset: 0 0 auto 0; z-index: 1000; background: rgba(244,238,227,0.82); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; min-height: 66px; }
+    .brand { font-family: var(--serif); font-weight: 500; letter-spacing: 0.04em; color: var(--ink); font-size: 1.02rem; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); transition: color var(--t); }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { padding: 0.65rem 1.15rem; background: var(--ink); color: var(--paper-2) !important; border-radius: 999px; }
+    .nav-cta:hover { background: var(--ink-soft); }
+    .burger { display: none; background: none; border: 0; font-size: 1.5rem; color: var(--ink); cursor: pointer; }
+    .m-menu { display: none; position: fixed; inset: 66px 0 auto 0; z-index: 999; background: var(--paper); border-bottom: 1px solid var(--line); padding: 0.5rem 1.5rem 1.2rem; }
+    .m-menu.open { display: block; }
+    .m-menu a { display: block; padding: 1rem 0; border-bottom: 1px solid var(--line); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.82rem; color: var(--text); }
+
+    /* HERO — centered, with left breathing space */
+    .hero { min-height: 100svh; display: flex; align-items: center; padding: calc(66px + clamp(1.5rem,5vh,3rem)) 0 clamp(2rem,5vh,3.5rem); }
+    .hero-in { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem,5vw,4.5rem); align-items: center; width: 100%; }
+    .hero-kicker { font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--clay); font-weight: 600; margin-bottom: 1.3rem; }
+    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.5rem, 5.6vw, 4.8rem); line-height: 1.02; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 1.5rem; }
+    .hero h1 em { font-style: italic; display: block; }
+    .hero p.intro { max-width: 460px; color: var(--muted); font-size: 1.02rem; margin-bottom: 2rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 50px; padding: 0 1.4rem; border-radius: 999px; font-size: 0.78rem; text-transform: uppercase[...]
+    .btn-primary { background: var(--ink); color: var(--paper-2); }
+    .btn-primary:hover { background: var(--ink-soft); transform: translateY(-2px); }
+    .btn-ghost { border-color: var(--line); color: var(--ink); }
+    .btn-ghost:hover { background: rgba(27,58,139,0.05); }
+
+    /* HERO: Instagram-style screenshot post (clickable) */
+    .ig-post { max-width: 380px; margin-left: auto; background: var(--paper-2); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); transition: var(--t[...]
+    .ig-post:hover { transform: translateY(-4px); }
+    .ig-top { display: flex; align-items: center; gap: 0.6rem; padding: 0.8rem 1rem; border-bottom: 1px solid var(--line); }
+    .ig-avatar { width: 34px; height: 34px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--clay), var(--ink)); flex-shrink: 0; }
+    .ig-handle { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+    .ig-sub { font-size: 0.68rem; color: var(--muted); }
+    .ig-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; background: #11203f; }
+    .ig-actions { display: flex; gap: 0.9rem; padding: 0.7rem 1rem 0.2rem; font-size: 1.1rem; color: var(--text); }
+    .ig-cap { padding: 0.3rem 1rem 1rem; font-size: 0.8rem; color: var(--muted); }
+    .ig-cap b { color: var(--text); }
+
+    /* REELS */
+    .reels-head { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: space-between; align-items: end; margin-bottom: 1.8rem; }
+    .swipe-cue { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .swipe-cue .arrow { animation: nudge 1.6s ease-in-out infinite; }
+    @keyframes nudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+    .carousel { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(230px, 270px); gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.8rem; scrollbar-width[...]
+    .carousel::-webkit-scrollbar { display: none; }
+    .reel { scroll-snap-align: start; background: var(--paper-2); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: var(--t)[...]
+    .reel:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .reel-media { aspect-ratio: 9/16; position: relative; overflow: hidden; background: #11203f; }
+    .reel-media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--t); }
+    .reel:hover .reel-media img { transform: scale(1.04); }
+    .reel-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,14,28,0.55) 0%, transparent 42%); }
+    .reel-media .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 54px; height: 54px; border-radius: 50%; background: rgba(251,248,242,0.92); display: grid;[...]
+    .reel-media .ig { position: absolute; left: 0.8rem; bottom: 0.75rem; z-index: 2; font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; font-weight: 600; }
+    .reel-body { padding: 0.95rem 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .reel-tag { font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); font-weight: 600; }
+
+    /* SPLIT PANELS */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .panel { background: var(--paper-2); border: 1px solid var(--line); border-radius: 24px; padding: clamp(1.6rem,4vw,2.4rem); box-shadow: var(--shadow); }
+    .panel.dark { background: linear-gradient(170deg, #1B3A8B, #122A66); color: var(--paper-2); border: none; }
+    .panel.dark .eyebrow { color: var(--clay); }
+    .panel h3.ptitle { font-family: var(--serif); font-weight: 400; font-size: clamp(1.7rem,3.4vw,2.6rem); line-height: 1.04; color: var(--ink); margin-bottom: 1rem; }
+    .panel.dark h3.ptitle { color: var(--paper-2); }
+    .panel p { color: var(--muted); margin-bottom: 1.2rem; }
+    .panel.dark p { color: rgba(251,248,242,0.82); }
+
+    /* TESTIMONIALS — uniform structure */
+    .tgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    .tcard { background: var(--paper-2); border: 1px solid var(--line); border-radius: 20px; padding: 1.6rem; display: flex; flex-direction: column; }
+    .tcard .shift { font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--clay); font-weight: 700; margin-bottom: 0.9rem; }
+    .tcard .q { font-size: 0.92rem; color: var(--text); flex: 1; margin-bottom: 1.2rem; }
+    .tcard .who { border-top: 1px solid var(--line); padding-top: 0.9rem; }
+    .tcard .nm { font-weight: 600; color: var(--ink); font-size: 0.9rem; }
+    .tcard .role { font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-top: 0.15rem; }
+
+    /* ESSENTIALS */
+    .egrid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; }
+    .ecard { background: var(--paper-2); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; }
+    .ecard .pimg { width: 100%; aspect-ratio: 16/10; object-fit: cover; background: linear-gradient(135deg, rgba(27,58,139,0.12), rgba(190,121,80,0.14)); }
+    .ecard .pbody { padding: 1.6rem; display: flex; flex-direction: column; gap: 0.9rem; flex: 1; }
+    .ecard .ehead { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+    .ecard h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; line-height: 1.04; color: var(--ink); }
+    .ecard .brand { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--clay); font-weight: 600; white-space: nowrap; }
+    .ecard .pitch { font-size: 0.92rem; color: var(--muted); }
+    .benefits { display: grid; gap: 0.5rem; }
+    .benefits span { font-size: 0.85rem; color: var(--text); }
+    .benefits span strong { color: var(--ink); }
+    .ecard .code { font-size: 0.8rem; letter-spacing: 0.04em; color: var(--text); }
+    .ecard .code b { color: var(--clay); }
+
+
