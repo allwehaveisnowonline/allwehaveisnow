@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Men — waiting list | ALLWEHAVEISNOW.</title>
+<meta name="description" content="This room is being prepared. Leave your name and I will write when the dates are set." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz@9..144&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:#EAE6DE;font-family:Archivo,Helvetica,Arial,sans-serif;color:#1F3C8C;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+/* NAV — homepage system (index.html) */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:1000;background:rgba(244,238,227,0.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,58,139,0.14)}
+  .nav-in{max-width:1288px;margin:0 auto;padding:0 64px;min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:24px;font-family:'Inter',system-ui,sans-serif}
+  .brand{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:0.04em;color:#1B3A8B;font-size:1.02rem;text-transform:none}
+  .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center}
+  .nav-links a{font-family:'Inter',system-ui,sans-serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:#6A7079;transition:color 0.45s cubic-bezier(0.2,0.7,0.2,1)}
+  .nav-links a:hover,.nav-links a[aria-current]{color:#1B3A8B}
+  .nav-cta{padding:0.65rem 1.15rem;background:#1B3A8B;color:#FBF8F2 !important;border-radius:999px;font-family:'Inter',system-ui,sans-serif !important;font-size:0.78rem !important;letter-spacing:0.1em !important}
+  .nav-cta:hover{background:#34508F}
+  .burger{display:none;background:none;border:0;font-size:1.5rem;color:#1B3A8B;cursor:pointer;line-height:1}
+  .mmenu{display:none;position:fixed;inset:66px 0 auto 0;z-index:999;background:#F4EEE3;border-bottom:1px solid rgba(27,58,139,0.14);padding:0.5rem 1.5rem 1.2rem}
+  .mmenu.open{display:block}
+  .mmenu a{display:block;padding:1rem 0;border-bottom:1px solid rgba(27,58,139,0.14);font-family:'Inter',system-ui,sans-serif;text-transform:uppercase;letter-spacing:0.1em;font-size:0.82rem;color:#232A33}
+  .mmenu a.sub{padding-left:1.2rem;color:#6A7079;font-size:0.76rem}
+
+  .has-sub{position:relative}
+  .has-sub>a{display:inline-flex;align-items:center;gap:0.35rem}
+  .has-sub>a::after{content:"";width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-1px)}
+  .subnav{position:absolute;top:100%;left:-1rem;min-width:250px;background:#FBF8F2;border:1px solid rgba(27,58,139,0.14);border-radius:20px;box-shadow:0 24px 70px rgba(20,28,45,0.10);padding:0.5rem;list-style:none;opacity:0;visibility:hidden;transform:translateY(6px);transition:all 0.45s cubic-bezier(0.2,0.7,0.2,1)}
+  .has-sub:hover .subnav,.has-sub:focus-within .subnav{opacity:1;visibility:visible;transform:translateY(0)}
+  .subnav a{display:block;padding:0.7rem 0.85rem;border-radius:10px;font-family:'Inter',system-ui,sans-serif !important;font-size:0.88rem !important;letter-spacing:0 !important;text-transform:none !important;color:#232A33 !important;line-height:1.35}
+  .subnav a:hover{background:rgba(27,58,139,0.06);color:#1B3A8B !important}
+  .subnav .meta{display:block;font-family:'Inter',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:#BE7950;font-weight:600;margin-top:0.2rem}
+  .mmenu a.sub{padding-left:18px;color:rgba(31,60,140,0.7)}
+  .burger{display:none;background:none;border:0;font-size:22px;color:#1F3C8C;cursor:pointer;line-height:1}
+  .mmenu{display:none;position:fixed;inset:66px 0 auto 0;z-index:999;background:#EAE6DE;border-bottom:1px solid rgba(31,60,140,0.18);padding:8px 28px 20px}
+  .mmenu.open{display:block}
+  .mmenu a{display:block;padding:16px 0;border-bottom:1px solid rgba(31,60,140,0.14);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase}
+  .pad{padding:132px 64px 120px}
+  .stack{max-width:1160px;margin:0 auto}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(31,60,140,0.6);padding-bottom:32px;border-bottom:1px solid rgba(31,60,140,0.22);margin-bottom:48px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+  .dot{width:5px;height:5px;border-radius:50%;background:rgba(31,60,140,0.35)}
+  h1{font-size:72px;line-height:0.98;font-weight:800;letter-spacing:-0.038em;text-transform:uppercase;max-width:16ch}
+  .foot{border-top:1px solid rgba(31,60,140,0.2)}
+  .foot-in{max-width:1288px;margin:0 auto;padding:32px 64px 56px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(31,60,140,0.6)}
+  @media (max-width:980px){
+    .nav-in{padding:0 1.5rem}.nav-links{display:none}.burger{display:block}
+    .pad{padding:110px 24px 72px}h1{font-size:40px;max-width:none}
+    .foot-in{padding:28px 24px 44px}
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/">ALLWEHAVEISNOW.</a>
+    <ul class="nav-links">
+      <li><a href="https://www.allwehaveisnow.online/#podcast">Podcast</a></li>
+      <li><a href="https://www.allwehaveisnow.online/#membership">Membership</a></li>
+      <li class="has-sub"><a href="retreats.html">Retreats</a>
+        <ul class="subnav">
+          <li><a href="retreats-women.html">Women<span class="meta">Open · Begins 1 October</span></a></li>
+          <li><a href="https://www.allwehaveisnow.online/#reset">Individual<span class="meta">Open · One to one</span></a></li>
+          <li><a href="soon.html">Men<span class="meta">In preparation</span></a></li>
+        </ul>
+      </li>
+      <li><a href="https://www.allwehaveisnow.online/#essentials">Essentials</a></li>
+      <li><a class="nav-cta" href="https://calendly.com/allwehaveisnow-online/application-women-circle" target="_blank" rel="noopener">Save your seat</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu">
+  <a href="https://www.allwehaveisnow.online/#podcast">Podcast</a>
+  <a href="https://www.allwehaveisnow.online/#membership">Membership</a>
+  <a href="retreats.html">Retreats</a>
+  <a class="sub" href="retreats-women.html">Women</a>
+  <a class="sub" href="https://www.allwehaveisnow.online/#reset">Individual</a>
+  <a class="sub" href="soon.html">Men</a>
+  <a href="https://www.allwehaveisnow.online/#essentials">Essentials</a>
+  <a href="https://calendly.com/allwehaveisnow-online/application-women-circle" target="_blank" rel="noopener">Save your seat</a>
+</div>
+<main class="pad">
+  <div class="stack">
+    <div class="kicker">
+      <span><a href="retreats.html" style="color:rgba(31,60,140,0.6)">Retreats</a> / Men</span>
+      <span class="dot"></span><span>In preparation</span>
+    </div>
+    <h1>The men’s room is being built.</h1>
+    <p style="margin:32px 0 0;font-size:22px;line-height:1.4;max-width:620px;color:rgba(31,60,140,0.75);text-wrap:pretty;">The work is written. The dates are not. Leave your email and you will hear before it opens publicly.</p>
+
+    <form action="https://formspree.io/f/xbdvdlgr" method="POST" style="margin-top:48px;border:1px solid rgba(31,60,140,0.25);padding:36px;max-width:620px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(31,60,140,0.55);margin-bottom:20px;">Waiting list</div>
+      <input type="hidden" name="_subject" value="Men's retreat — waiting list" />
+      <input type="hidden" name="room" value="men" />
+      <div style="display:flex;flex-wrap:wrap;gap:14px;">
+        <input type="email" name="email" required placeholder="Your email" style="flex:1 1 260px;min-width:0;background:#EAE6DE;border:1px solid rgba(31,60,140,0.35);padding:19px 18px;font-family:Archivo,sans-serif;font-size:16px;color:#1F3C8C;outline:none;" />
+        <button type="submit" style="background:#1F3C8C;color:#EAE6DE;border:0;padding:20px 34px;font-family:Archivo,sans-serif;font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;">Put me on the list</button>
+      </div>
+      <div style="font-size:14px;line-height:1.6;margin-top:18px;color:rgba(31,60,140,0.7);">One email when the dates are set. Nothing else.</div>
+    </form>
+    <div style="margin-top:28px;"><a href="retreats.html" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(31,60,140,0.6);">← Back to retreats</a></div>
+
+    <div class="two" style="margin-top:96px;border-top:1px solid rgba(31,60,140,0.22);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start;">
+      <div style="font-size:28px;line-height:1.15;font-weight:600;letter-spacing:-0.02em;text-wrap:pretty;">The women's circle is open now.</div>
+      <div>
+        <p style="margin:0 0 24px;font-size:17px;line-height:1.65;color:#2B2A27;text-wrap:pretty;">Twelve women, twelve weeks, beginning 1 October. Twelve seats and no waiting list.</p>
+        <a href="retreats-women.html" style="display:inline-flex;align-items:center;border:1px solid rgba(31,60,140,0.35);padding:18px 30px;font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">See the women's circle</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<style>@media (max-width:980px){.two{grid-template-columns:1fr !important;gap:28px !important}}</style>
+<footer class="foot">
+  <div class="foot-in">
+    <span>© Allwehaveisnow.</span>
+    <a href="mailto:allwehaveisnow.online@gmail.com">allwehaveisnow.online@gmail.com</a>
+  </div>
+</footer>
+<script>
+  document.getElementById('burger').addEventListener('click',function(){document.getElementById('mmenu').classList.toggle('open');});
+</script>
+</body>
+</html>

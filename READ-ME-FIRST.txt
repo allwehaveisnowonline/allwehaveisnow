@@ -1,0 +1,30 @@
+ALLWEHAVEISNOW — retreats pages
+================================
+
+Drop these into the ROOT of the repo allwehaveisnowonline/allwehaveisnow
+(branch: main), keeping the folder structure exactly as it is here:
+
+  retreats.html               ->  /retreats
+  retreats-women.html         ->  /retreats-women
+  soon.html                   ->  /soon
+  assets/images/holding.jpg   ->  used by retreats-women.html
+
+Nothing else in the repo needs to change for these three pages to work.
+Vercel redeploys automatically on push.
+
+ONE OPTIONAL EXTRA
+------------------
+To surface "Retreats" in the homepage menu, edit index.html and change the
+nav link that currently reads "12-Week Reset" so it points at /retreats:
+
+    <li><a href="/retreats">Retreats</a></li>
+
+Do the same in the mobile menu block.
+
+LINKS ALREADY WIRED
+-------------------
+  Women       ->  retreats-women.html
+  Individual  ->  https://www.allwehaveisnow.online/#reset
+  Men         ->  soon.html  (waiting-list form -> Formspree xbdvdlgr)
+  Apply       ->  https://calendly.com/allwehaveisnow-online/application-women-circle
+  Email       ->  allwehaveisnow.online@gmail.com
