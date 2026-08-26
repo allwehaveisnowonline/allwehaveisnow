@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,6 +76,17 @@
     .m-menu { display: none; position: fixed; inset: 66px 0 auto 0; z-index: 999; background: var(--paper); border-bottom: 1px solid var(--line); padding: 0.5rem 1.5rem 1.2rem; }
     .m-menu.open { display: block; }
     .m-menu a { display: block; padding: 1rem 0; border-bottom: 1px solid var(--line); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.82rem; color: var(--text); }
+
+    /* NAV DROPDOWN — Retreats */
+    .has-sub { position: relative; }
+    .has-sub > a { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .has-sub > a::after { content: ""; width: 5px; height: 5px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg) translateY(-1px); }
+    .subnav { position: absolute; top: 100%; left: -1rem; min-width: 250px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); padding: 0.5rem; list-style: none; opacity: 0; visibility: hidden; transform: translateY(6px); transition: all var(--t); }
+    .has-sub:hover .subnav, .has-sub:focus-within .subnav { opacity: 1; visibility: visible; transform: translateY(0); }
+    .subnav a { display: block; padding: 0.7rem 0.85rem; border-radius: 10px; font-size: 0.88rem; letter-spacing: 0; text-transform: none; color: var(--text); line-height: 1.35; }
+    .subnav a:hover { background: rgba(27,58,139,0.06); color: var(--ink); }
+    .subnav .meta { display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--clay); font-weight: 600; margin-top: 0.2rem; }
+    .m-menu a.sub { padding-left: 1.2rem; color: var(--muted); font-size: 0.76rem; }
 
     /* HERO — centered, with left breathing space */
     .hero { min-height: 100svh; display: flex; align-items: center; padding: calc(66px + clamp(1.5rem,5vh,3rem)) 0 clamp(2rem,5vh,3.5rem); }
@@ -183,7 +193,7 @@
     /* ESSENTIALS */
     .egrid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; }
     .ecard { background: var(--paper-2); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; }
-    .ecard .pimg { width: 100%; aspect-ratio: 16/10; object-fit: cover; background: linear-gradient(135deg, rgba(27,58,139,0.12), rgba(190,121,80,0.14)); }
+    .ecard .pimg { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: var(--paper-2); }
     .ecard .pbody { padding: 1.6rem; display: flex; flex-direction: column; gap: 0.9rem; flex: 1; }
     .ecard .ehead { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
     .ecard h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; line-height: 1.04; color: var(--ink); }
@@ -253,7 +263,13 @@
           <li><a href="#reels">Reels</a></li>
           <li><a href="#podcast">Podcast</a></li>
           <li><a href="#membership">Membership</a></li>
-          <li><a href="#reset">12-Week Reset</a></li>
+          <li class="has-sub"><a href="/retreats">Retreats</a>
+            <ul class="subnav">
+              <li><a href="/retreats-women">Women<span class="meta">Open · Begins 1 October</span></a></li>
+              <li><a href="#reset">Individual<span class="meta">Open · One to one</span></a></li>
+              <li><a href="/soon">Men<span class="meta">In preparation</span></a></li>
+            </ul>
+          </li>
           <li><a href="#foryou">Is This For You</a></li>
           <li><a href="#essentials">Essentials</a></li>
           <li><a href="#apply" class="nav-cta">Apply</a></li>
@@ -265,7 +281,10 @@
       <a href="#reels">Reels</a>
       <a href="#podcast">Podcast</a>
       <a href="#membership">Membership</a>
-      <a href="#reset">12-Week Reset</a>
+      <a href="/retreats">Retreats</a>
+      <a class="sub" href="/retreats-women">Women</a>
+      <a class="sub" href="#reset">Individual</a>
+      <a class="sub" href="/soon">Men</a>
       <a href="#foryou">Is This For You</a>
       <a href="#essentials">Essentials</a>
       <a href="#apply">Apply</a>
@@ -465,9 +484,9 @@
         </div>
 
         <div class="egrid" style="margin-top:2.4rem;">
-          <!-- Drop product images into the same folder: product-1.jpg … product-4.jpg -->
+          <!-- Product images live in assets/images/square/ -->
           <article class="ecard reveal">
-            <img class="pimg" src="product-1.jpg" alt="Wahre Magie medicinal mushroom powder" />
+            <img class="pimg" src="assets/images/square/wahremagie.png" alt="Wahre Magie medicinal mushroom powder" />
             <div class="pbody">
               <div class="ehead"><h3>Medicinal Mushroom Powder</h3><span class="brand">Wahre Magie</span></div>
               <p class="pitch">Medicinal mushroom blends — the cellular foundation. Featured in the episode <em>"WahreMagiePlus — Nichts für schwache Nerven."</em></p>
@@ -478,14 +497,14 @@
               </div>
               <div class="code">Code <b>ZENSATION</b> · 7% off</div>
               <div class="erow">
-                <a class="btn btn-primary" href="https://wahremagie.com/?ref=wbfmebqf" target="_blank" rel="noopener">Shop &amp; use code</a>
+                <a class="btn btn-primary" href="https://wahremagie.shop/products/magieplus?ref=wbfmebqf" target="_blank" rel="noopener">Shop Wahre Magie</a>
                 <a class="reel-link" href="https://open.spotify.com/show/0ENgiuuAo9DqAeSkaOcQGD" target="_blank" rel="noopener">Hear the episode ↗</a>
               </div>
             </div>
           </article>
 
           <article class="ecard reveal">
-            <img class="pimg" src="product-2.jpg" alt="Suyana ceremonial cacao" />
+            <img class="pimg" src="assets/images/square/suyana.png" alt="Suyana ceremonial cacao" />
             <div class="pbody">
               <div class="ehead"><h3>Ceremonial Cacao</h3><span class="brand">Suyana</span></div>
               <p class="pitch">Pure ceremonial cacao and ceremony supplies — for ritual, presence, and gentle heart-opening.</p>
@@ -495,12 +514,12 @@
                 <span><strong>Spirit:</strong> anchors intention and ceremony into the everyday.</span>
               </div>
               <div class="code">Code <b>allwehaveisnow10</b></div>
-              <div class="erow"><a class="btn btn-primary" href="https://suyana.shop/?rfsn=8895244.94b6f5" target="_blank" rel="noopener">Shop &amp; use code</a></div>
+              <div class="erow"><a class="btn btn-primary" href="https://suyana.shop/?rfsn=8895244.94b6f5" target="_blank" rel="noopener">Shop Suyana</a></div>
             </div>
           </article>
 
           <article class="ecard reveal">
-            <img class="pimg" src="product-3.jpg" alt="Zippit mouth and nose strips" />
+            <img class="pimg" src="assets/images/square/zippit.png" alt="Zippit mouth and nose strips" />
             <div class="pbody">
               <div class="ehead"><h3>Mouth &amp; Nose Strips</h3><span class="brand">Zippit</span></div>
               <p class="pitch">Nasal and mouth strips for nasal breathing and deeper, more restorative sleep.</p>
@@ -509,12 +528,12 @@
                 <span><strong>Mind:</strong> deeper sleep means sharper, calmer mornings.</span>
                 <span><strong>Spirit:</strong> breath as the simplest daily return to regulation.</span>
               </div>
-              <div class="erow"><a class="btn btn-primary" href="https://zippit.nl?sca_ref=8867770.QmJ2LqZNuv3L&sca_source=allwehaveisnow.online" target="_blank" rel="noopener">Shop Zippit</a></div>
+              <div class="erow"><a class="btn btn-primary" href="https://zippit.nl?sca_ref=8867770.QmJ2LqZNuv3L&amp;sca_source=allwehaveisnow.online" target="_blank" rel="noopener">Shop Zippit</a></div>
             </div>
           </article>
 
           <article class="ecard reveal">
-            <img class="pimg" src="product-4.jpg" alt="Fliegenpills focus support" />
+            <img class="pimg" src="assets/images/square/fliegenpills.png" alt="Fliegenpills focus support" />
             <div class="pbody">
               <div class="ehead"><h3>Fliegenpills</h3><span class="brand">Focus</span></div>
               <p class="pitch">For when you need to lock in and stay focused — like coffee, without the jitters.</p>
@@ -524,7 +543,7 @@
                 <span><strong>Spirit:</strong> protects the focus your real work deserves.</span>
               </div>
               <div class="code">Code <b>allwehaveisnow</b></div>
-              <div class="erow"><a class="btn btn-primary" href="https://fliegenpills.com/?ref=allwehaveisnow" target="_blank" rel="noopener">Shop &amp; use code</a></div>
+              <div class="erow"><a class="btn btn-primary" href="https://fliegenpills.com/?ref=allwehaveisnow" target="_blank" rel="noopener">Shop Fliegenpills</a></div>
             </div>
           </article>
         </div>
@@ -571,6 +590,7 @@
           <div class="ftitle">Explore</div>
           <a href="#podcast">Podcast</a>
           <a href="#membership">Membership</a>
+          <a href="/retreats">Retreats</a>
           <a href="#essentials">Essentials</a>
           <a href="#foryou">Is This For You</a>
         </div>
