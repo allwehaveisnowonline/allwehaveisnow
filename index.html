@@ -260,7 +260,6 @@
       <a href="#top" class="brand">ALLWEHAVEISNOW.</a>
       <nav>
         <ul class="nav-links">
-          <li><a href="#reels">Reels</a></li>
           <li><a href="#podcast">Podcast</a></li>
           <li><a href="#membership">Membership</a></li>
           <li class="has-sub"><a href="/retreats.html">Retreats</a>
@@ -272,13 +271,12 @@
           </li>
           <li><a href="#foryou">Is This For You</a></li>
           <li><a href="#essentials">Essentials</a></li>
-          <li><a href="#apply" class="nav-cta">Apply</a></li>
+          <li><a href="#apply" class="nav-cta">Get in touch</a></li>
         </ul>
       </nav>
       <button class="burger" id="burger" aria-label="Menu">☰</button>
     </div>
     <div class="m-menu" id="mMenu">
-      <a href="#reels">Reels</a>
       <a href="#podcast">Podcast</a>
       <a href="#membership">Membership</a>
       <a href="/retreats.html">Retreats</a>
@@ -287,7 +285,7 @@
       <a class="sub" href="/soon.html">Men</a>
       <a href="#foryou">Is This For You</a>
       <a href="#essentials">Essentials</a>
-      <a href="#apply">Apply</a>
+      <a href="#apply">Get in touch</a>
     </div>
   </header>
 
@@ -453,27 +451,6 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="section" id="testimonials">
-      <div class="wrap">
-        <div class="reveal">
-          <div class="eyebrow">Testimonials</div>
-          <h2 class="title">What shifts when people are truly <em>held.</em></h2>
-        </div>
-        <div class="tgrid" style="margin-top:2.4rem;">
-          <article class="tcard reveal"><div class="shift">Felt safe &amp; seen</div><p class="q">"One of the most beautiful, heartfelt experiences I've ever had. I felt completely supported and held in a way I've never experienced."</p><div class="who"><div class="nm">— Mia</div><div class="role">Artist, Berlin</div></div></article>
-          <article class="tcard reveal"><div class="shift">Reclaimed his drive</div><p class="q">"Everything feels simple again. The drive to build, to create concepts — it's back. Finally, I'm moving at my pace, not the world's."</p><div class="who"><div class="nm">— David</div><div class="role">Founder, NYC</div></div></article>
-          <article class="tcard reveal"><div class="shift">Reconnected to herself</div><p class="q">"If I had to choose one person for deep inner work, I'd always choose Karo. She senses exactly what you need to hear."</p><div class="who"><div class="nm">— Lucia</div><div class="role">Therapist, LA</div></div></article>
-          <article class="tcard reveal"><div class="shift">Moved into healing</div><p class="q">"It's fascinating how deeply she tunes in — as if she steps inside and senses exactly where something is stuck, then gently frees it."</p><div class="who"><div class="nm">— James</div><div class="role">Coach, London</div></div></article>
-          <article class="tcard reveal"><div class="shift">Finally let go</div><p class="q">"Even as a strong male, I was able to release, open up, and soften within her otherworldly patience. I felt like I could breathe again."</p><div class="who"><div class="nm">— Marcus</div><div class="role">CEO, Amsterdam</div></div></article>
-          <article class="tcard reveal"><div class="shift">Found clarity</div><p class="q">"Karo brought clarity to one of the most important decisions of my life and gently guided me back to my intuition when I'd lost it."</p><div class="who"><div class="nm">— Sofia</div><div class="role">Artist, Barcelona</div></div></article>
-          <article class="tcard reveal"><div class="shift">Slept through grief</div><p class="q">"I couldn't sleep through the grief of a break-up. Karo calmed my nervous system with frequency work that felt like medicine for my soul."</p><div class="who"><div class="nm">— Emma</div><div class="role">Designer, Paris</div></div></article>
-          <article class="tcard reveal"><div class="shift">Expanded &amp; grounded</div><p class="q">"A powerful moment of expansion — I left feeling aligned, peaceful, and deeply connected to something larger than myself."</p><div class="who"><div class="nm">— Alex</div><div class="role">Writer, Portland</div></div></article>
-          <article class="tcard reveal"><div class="shift">Released the weight</div><p class="q">"I realised I'd been afraid to be vulnerable. I let myself fall — and a huge weight released from my shoulders the moment I landed."</p><div class="who"><div class="nm">— Nina</div><div class="role">Entrepreneur, Berlin</div></div></article>
-        </div>
-      </div>
-    </section>
-
     <!-- ESSENTIALS -->
     <section class="section" id="essentials">
       <div class="wrap">
@@ -562,14 +539,16 @@
             </div>
 
             <!-- This form sends straight to allwehaveisnow.online@gmail.com -->
-            <form class="form-card" action="mailto:allwehaveisnow.online@gmail.com" method="post" enctype="text/plain">
+            <form class="form-card" id="applyForm" method="POST">
+              <input type="hidden" name="_subject" value="Get in touch — allwehaveisnow.online" />
               <div class="form-row">
                 <div class="fg"><label>Your name</label><input type="text" name="Name" placeholder="First name" required /></div>
                 <div class="fg"><label>Email</label><input type="email" name="Email" placeholder="you@email.com" required /></div>
               </div>
               <div class="fg"><label>What are you moving through right now?</label><textarea name="Current state" placeholder="Be honest. There's no wrong answer." required></textarea></div>
               <div class="fg"><label>What's your intention — what do you want to come home to?</label><textarea name="Intention / Goal" placeholder="If this works, what changes in 12 weeks?" required></textarea></div>
-              <button type="submit" class="btn btn-primary" style="background:var(--clay);">Send my enquiry →</button>
+              <button type="submit" class="btn btn-primary" style="background:var(--clay);">Get in touch →</button>
+              <p id="applyNote" style="font-size:0.85rem;color:var(--muted);margin-top:0.9rem;"></p>
             </form>
           </div>
         </div>
@@ -614,6 +593,29 @@
 
     // FAQ accordion
     document.querySelectorAll('.acc-q').forEach(q => q.addEventListener('click', () => q.parentElement.classList.toggle('open')));
+
+    // Contact form -> email
+    var EP = 'https://script.google.com/macros/s/AKfycbzYVPUh7x2uMgJusD2hO8Os_RIVfd_KKmqlvR_ZaN7V9C1bR8DwpqpTJsoRHOK_lRa4/exec';
+    var applyForm = document.getElementById('applyForm');
+    if (applyForm) {
+      applyForm.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        var btn = applyForm.querySelector('button[type="submit"]');
+        var note = document.getElementById('applyNote');
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        fetch(EP, { method: 'POST', mode: 'no-cors', body: new FormData(applyForm) })
+          .then(function(){
+            applyForm.querySelectorAll('.form-row, .fg, button').forEach(function(el){ el.style.display = 'none'; });
+            note.innerHTML = '<strong style="color:var(--ink)">Thank you.</strong> Your message is with me — I answer personally, usually within a day or two.';
+          })
+          .catch(function(){
+            btn.disabled = false;
+            btn.textContent = 'Get in touch →';
+            note.innerHTML = 'That did not go through. Please write to <a href="mailto:allwehaveisnow.online@gmail.com">allwehaveisnow.online@gmail.com</a>.';
+          });
+      });
+    }
 
     // Reveal on scroll
     const obs = new IntersectionObserver(entries => {
