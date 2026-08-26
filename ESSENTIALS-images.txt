@@ -1,0 +1,45 @@
+ESSENTIALS — image swap only
+============================
+Your existing card copy stays exactly as it is. This only replaces the
+four placeholders with real photos.
+
+1. COPY THESE FILES into the repo, keeping the folder path:
+
+     assets/images/suyana.jpg
+     assets/images/wahremagie.jpg
+     assets/images/zippit.jpg
+     assets/images/fliegenpills.jpg
+
+2. IN index.html, inside the #essentials section, each card has an
+   image element with the class "pimg". Give each one its src:
+
+     <img class="pimg" src="assets/images/suyana.jpg"       alt="Suyana ceremonial cacao" />
+     <img class="pimg" src="assets/images/wahremagie.jpg"   alt="Wahre Magie Magie Plus" />
+     <img class="pimg" src="assets/images/zippit.jpg"       alt="Zippit mouth tape and nasal strips" />
+     <img class="pimg" src="assets/images/fliegenpills.jpg" alt="Fliegenpills" />
+
+   If the placeholder is currently a <div class="pimg"></div> rather than
+   an <img>, replace that div with the <img> line above.
+
+
+3. OPTIONAL — the unifying ink overlay you picked (14%, lifts on hover).
+   Paste at the end of the <style> block in index.html:
+
+     #essentials .ecard .pwrap { position: relative; overflow: hidden; }
+     #essentials .ecard .pwrap::after {
+       content: ""; position: absolute; inset: 0;
+       background: var(--ink); opacity: 0.14;
+       transition: opacity var(--t); pointer-events: none;
+     }
+     #essentials .ecard:hover .pwrap::after { opacity: 0.04; }
+
+   This needs each <img class="pimg"> wrapped in <div class="pwrap"> … </div>.
+   Skip step 3 entirely if you would rather keep the photos untouched.
+
+
+AFFILIATE LINKS (in case any card link needs updating)
+-----------------------------------------------------
+  Suyana        https://suyana.shop/#allwehaveisnow          code allwehaveisnow10 (10%)
+  Wahre Magie   https://wahremagie.com/?ref=wbfmebqf         code ZENSATION (7%)
+  Zippit        https://zippit.nl?sca_ref=8867770.QmJ2LqZNuv3L&sca_source=allwehaveisnow.online
+  Fliegenpills  https://fliegenpills.com/?ref=allwehaveisnow code allwehaveisnow

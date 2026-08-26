@@ -1,0 +1,33 @@
+ESSENTIALS — replace the section body in index.html
+====================================================
+
+STEP 1 — copy the four images into the repo (keep the path):
+
+    assets/images/square/suyana.png
+    assets/images/square/wahremagie.png
+    assets/images/square/zippit.png
+    assets/images/square/fliegenpills.png
+
+STEP 2 — in index.html, inside <section id="essentials">, the four cards'
+image tags currently point at paths that 404. Change each src to:
+
+    <img class="pimg" src="assets/images/square/wahremagie.png"   alt="Wahre Magie medicinal mushroom powder" />
+    <img class="pimg" src="assets/images/square/suyana.png"       alt="Suyana ceremonial cacao" />
+    <img class="pimg" src="assets/images/square/zippit.png"       alt="Zippit mouth and nose strips" />
+    <img class="pimg" src="assets/images/square/fliegenpills.png" alt="Fliegenpills focus support" />
+
+That alone fixes the broken images. Everything below is optional.
+
+STEP 3 (optional) — square images need a square frame. If .pimg is
+currently 16/10, change that one rule at the end of your <style>:
+
+    #essentials .pimg { aspect-ratio: 1 / 1; object-fit: cover; }
+
+STEP 4 (optional) — copy tweaks made in this project:
+  - Wahre Magie shop link  ->  https://wahremagie.shop/products/magieplus
+  - Buttons read "Shop Wahre Magie" / "Shop Suyana" / "Shop Zippit" / "Shop Fliegenpills"
+  - Zippit card: the "Through my link" line was removed
+
+NOTE: the Wahre Magie link above drops your ?ref=wbfmebqf affiliate tag.
+Use this instead if you want clicks tracked:
+    https://wahremagie.shop/products/magieplus?ref=wbfmebqf
